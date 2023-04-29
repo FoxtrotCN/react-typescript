@@ -15,7 +15,9 @@ function App() {
       {/*  heading="Cities"*/}
       {/*  onSelectedItem={handleSelectedItem}*/}
       {/*/>*/}
-      <Alert>This is a children Alert</Alert>
+      <Alert>
+        This is a children <b>Alert</b>
+      </Alert>
     </>
   );
 }
