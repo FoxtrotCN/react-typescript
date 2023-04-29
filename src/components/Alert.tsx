@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
+  onClose: () => void;
 }
 
 const Alert = ({ children, onClose }: Props) => {
