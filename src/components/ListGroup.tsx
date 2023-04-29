@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 // This line defines the shape (interface) of the values or props our component is going to use.
-
 interface Props {
   items: string[];
   heading: string;
+  onSelectedItem: (item: string) => void;
 }
 
-function ListGroup({ items, heading }: Props) {
+function ListGroup({ items, heading, onSelectedItem }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
@@ -15,17 +15,20 @@ function ListGroup({ items, heading }: Props) {
       <h1>{heading}</h1>
       {items.length === 0 && <p>No place found</p>}
       <ul className="list-group">
-        {items.map((place, index) => (
+        {items.map((item, index) => (
           <li
-            key={place}
+            key={item}
             className={
               selectedIndex === index
                 ? "list-group-item active"
                 : "list-group-item"
             }
-            onClick={() => setSelectedIndex(index)}
+            onClick={() => {
+              setSelectedIndex(index);
+              onSelectedItem(item);
+            }}
           >
-            {place}
+            {item}
           </li>
         ))}
       </ul>
