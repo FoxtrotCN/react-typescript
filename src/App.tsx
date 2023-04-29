@@ -13,9 +13,6 @@ function App() {
 
   const [alertVisibility, setAlertVisibility] = useState(false);
 
-  const handleAlertVisibility = () => {
-    setAlertVisibility(true);
-  };
   return (
     <>
       {/*<ListGroup*/}
@@ -26,8 +23,10 @@ function App() {
       {/*<Alert>*/}
       {/*  This is a children <b>Alert</b>*/}
       {/*</Alert>*/}
-      {alertVisibility && <Alert>My Alert</Alert>}
-      <Button color="success" onClick={handleAlertVisibility}>
+      {alertVisibility && (
+        <Alert onClose={() => setAlertVisibility(false)}>My Alert</Alert>
+      )}
+      <Button color="success" onClick={() => setAlertVisibility(true)}>
         Soy un boton
       </Button>
     </>

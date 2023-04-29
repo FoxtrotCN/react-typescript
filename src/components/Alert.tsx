@@ -4,7 +4,7 @@ interface Props {
   children: ReactNode;
 }
 
-const Alert = ({ children }: Props) => {
+const Alert = ({ children, onClose }: Props) => {
   return (
     <div
       className="alert alert-warning alert-dismissible fade show"
@@ -16,6 +16,7 @@ const Alert = ({ children }: Props) => {
         className="btn-close"
         data-bs-dismiss="alert"
         aria-label="Close"
+        onClick={onClose}
       >
         <span aria-hidden="true">&times;</span>
       </button>
