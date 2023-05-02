@@ -14,19 +14,23 @@ function App() {
 
   // const [alertVisibility, setAlertVisibility] = useState(false);
 
-  const [customer, setCustomer] = useState({
-    name: "John",
-    address: {
-      city: "Santo Domingo",
-      zipCode: 33198,
-    },
-  });
+  const [tags, setTags] = useState(["Happy", "Sad"]);
 
-  const handleClick = () => {
-    setCustomer({
-      ...customer,
-      address: { ...customer.address, zipCode: 33199 },
-    });
+  // Add
+
+  const handleClickAdd = () => {
+    setTags([...tags, "single"]);
+    return tags;
+  };
+
+  const handleClickRemove = () => {
+    setTags(tags.filter((tag) => tag !== "Happy"));
+    return tags;
+  };
+
+  const handleClickUpdate = () => {
+    setTags(tags.map((tag) => (tag === "Sad" ? "Sadness" : tag)));
+    return tags;
   };
 
   return (
@@ -47,8 +51,14 @@ function App() {
       {/*</Button>*/}
 
       {/*<Like onClick={() => console.log("Clicked.")} />*/}
-      {customer.address.zipCode}
-      <button onClick={handleClick}>Count</button>
+      {tags.map((tag) => (
+        <ul key={tag}>
+          <li>{tag}</li>
+        </ul>
+      ))}
+      <button onClick={handleClickAdd}>Add</button>
+      <button onClick={handleClickRemove}>Remove</button>
+      <button onClick={handleClickUpdate}>Update</button>
     </>
   );
 }
