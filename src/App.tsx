@@ -14,6 +14,17 @@ function App() {
 
   // const [alertVisibility, setAlertVisibility] = useState(false);
 
+  const [drink, setDrink] = useState({
+    title: "Coca Cola",
+    price: 0.99,
+  });
+
+  const handleDrink = () => {
+    const newDrink = { ...drink };
+    newDrink.price = 1;
+    setDrink(newDrink);
+  };
+
   return (
     <>
       {/*<ListGroup*/}
@@ -31,7 +42,9 @@ function App() {
       {/*  Soy un boton*/}
       {/*</Button>*/}
 
-      <Like onClick={() => console.log("Clicked.")} />
+      {/*<Like onClick={() => console.log("Clicked.")} />*/}
+      {drink.price}
+      <button onClick={handleDrink}>Count</button>
     </>
   );
 }
